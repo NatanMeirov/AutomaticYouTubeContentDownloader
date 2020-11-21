@@ -1,4 +1,4 @@
-# AutomaticYouTubeContentDownloader: Auto YouTube Content Downloader Project Using Selenium WebDriver
+# AutomaticYouTubeContentDownloader: Auto YouTube Content Downloader Project Using Python and Selenium WebDriver
 # ----------------------
 # Importent Notes:
 This software is NOT for use! This project was created ONLY for LEARNING PURPOSES.
