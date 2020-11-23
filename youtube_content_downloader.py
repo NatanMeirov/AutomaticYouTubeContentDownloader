@@ -96,18 +96,20 @@ class YouTubeContentDownloader():
         except:
             driver_wrapper.web_driver.get(self.WEB_CONVERTERS_URL[1])
 
-        format_button = driver_wrapper.web_driver.find_element_by_id(item_format) # mp3 for songs or mp4 for videos
+        driver_wrapper.waiting_timer.until(driver_wrapper.is_visible((driver_wrapper.locate_by.XPATH, f'//*[@id="{item_format}"]')))
+        format_button = driver_wrapper.web_driver.find_element_by_xpath(f'//*[@id="{item_format}"]') # mp3 for songs or mp4 for videos
         driver_wrapper.web_driver.execute_script(self.JS_CLICK_COMMAND, format_button)
 
-        url_content_input_field = driver_wrapper.web_driver.find_element_by_css_selector("#converter form #input")
+        driver_wrapper.waiting_timer.until(driver_wrapper.is_visible((driver_wrapper.locate_by.XPATH, '//*[@id="input"]')))
+        url_content_input_field = driver_wrapper.web_driver.find_element_by_xpath('//*[@id="input"]')
         driver_wrapper.web_driver.execute_script(self.JS_CLICK_COMMAND, url_content_input_field)
         url_content_input_field.send_keys(content_url)
 
-        converter_submit_button = driver_wrapper.web_driver.find_element_by_css_selector("#converter form #submit")
+        converter_submit_button = driver_wrapper.web_driver.find_element_by_xpath('//*[@id="submit"]')
         driver_wrapper.web_driver.execute_script(self.JS_CLICK_COMMAND, converter_submit_button)
 
-        driver_wrapper.waiting_timer.until(driver_wrapper.is_visible((driver_wrapper.locate_by.ID, "download"))) # Until the element is visible to the user - the convertion had finished
-        download_button = driver_wrapper.web_driver.find_element_by_id("download")
+        driver_wrapper.waiting_timer.until(driver_wrapper.is_visible((driver_wrapper.locate_by.XPATH, '//*[@id="download"]'))) # Until the element is visible to the user - the convertion had finished
+        download_button = driver_wrapper.web_driver.find_element_by_xpath('//*[@id="download"]')
         driver_wrapper.web_driver.execute_script(self.JS_CLICK_COMMAND, download_button)
 
 

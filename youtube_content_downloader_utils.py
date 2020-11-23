@@ -15,7 +15,7 @@ def find_correct_item_element_index_by_title(all_item_names: list, wanted_item_n
                 counter += 1
                 title_words.remove(word)
 
-        frequency = counter / max_words_count
+        frequency = counter / max(max_words_count, len(title_words))
 
         item_compare_list.add_new_item_compare_object(ItemCompareObject(current_title_index, frequency))
 
